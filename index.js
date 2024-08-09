@@ -186,8 +186,7 @@ export default async ({ req, res, log, error }) => {
       [], // bcc (optional)
       [], // attachments (optional)
       false, // draft (optional)
-      true, // html (optional)
-      "" // scheduledAt (optional)
+      true // html (optional)
     )
 
     // await axios.post(slackWebhookUrl, {
