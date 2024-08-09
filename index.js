@@ -1,7 +1,7 @@
 import { Client, Databases, Messaging, ID } from "node-appwrite"
 import axios from "axios"
 
-export default async ({ req, res, error }) => {
+export default async ({ req, res, log, error }) => {
   const {
     stakeholderId,
     feedbackType,
@@ -13,15 +13,6 @@ export default async ({ req, res, error }) => {
     eukapayLink,
   } = req.body
   const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL
-
-  const escapeHtml = (unsafe) => {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;")
-  }
 
   try {
     const client = new Client()
@@ -39,6 +30,19 @@ export default async ({ req, res, error }) => {
         process.env.APPWRITE_STAKEHOLDER_COLLECTION_ID,
         stakeholderId
       )
+
+    log(`Stakeholder ID: ${stakeholderId}`)
+    log(`Account ID: ${accountId}`)
+    log(`First name: ${firstName}`)
+    log(`Last name: ${lastName}`)
+    log(`Email: ${email}`)
+    log(`Feedback type: ${feedbackType}`)
+    log(`Industry: ${industry}`)
+    log(`Expertise: ${expertise}`)
+    log(`Number of experts: ${numberOfExperts}`)
+    log(`Time frame: ${timeFrame}`)
+    log(`Stripe link: ${stripeLink}`)
+    log(`Eukapay link: ${eukapayLink}`)
 
     const slackMessage = `We have a new feedback request!\n- First name: ${firstName}\n- Last name: ${lastName}\n- Email: ${email}${
       industry ? `\n- Industry: ${industry}` : ""
