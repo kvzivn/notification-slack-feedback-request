@@ -184,6 +184,7 @@ export default async ({ req, res, log, error }) => {
       [], // targets (optional)
       [], // cc (optional)
       [], // bcc (optional)
+      [], // attachments (optional)
       false, // draft (optional)
       true, // html (optional)
       "" // scheduledAt (optional)
