@@ -46,13 +46,14 @@ export default async ({ req, res, log, error }) => {
 
     const slackMessage = `We have a new feedback request!\n- First name: ${firstName}\n- Last name: ${lastName}\n- Email: ${email}${
       industry ? `\n- Industry: ${industry}` : ""
-    }${expertise ? `\n- Expertise needed: ${expertise}` : ""}${
-      numberOfExperts ? `\n- Number of experts: ${numberOfExperts}` : ""
-    }`
+    }${feedbackType ? `\n- Feedback type${feedbackType}` : ""}
+    ${expertise ? `\n- Expertise needed: ${expertise}` : ""}
+      ${numberOfExperts ? `\n- Number of experts: ${numberOfExperts}` : ""}
+      ${timeFrame ? `\n- When: ${timeFrame}` : ""}`
 
     await messaging.createEmail(
       ID.unique(),
-      "TeamSpark Feedback Session Details",
+      "TeamSpark Feedback Session",
       `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -121,11 +122,12 @@ export default async ({ req, res, log, error }) => {
 
     <p>If you didn't complete your payment, please use one of the following links:</p>
 
-    <p style="display:flex;flex-direction:column;">
+    <p>
       <a
         href="${stripeLink}"
           target="_blank"
           style="
+            display: block;
             width: fit-content;
             color: #d34c1f;
             text-decoration: underline;
@@ -138,6 +140,7 @@ export default async ({ req, res, log, error }) => {
         href="${eukapayLink}"
         target="_blank"
         style="
+          display: block;
           width: fit-content;
           color: #d34c1f;
           text-decoration: underline;
@@ -163,11 +166,12 @@ export default async ({ req, res, log, error }) => {
           alt="jason"
         />
       </p>
-      <p style="display:flex;flex-direction:column;">
+      <p>
         <a
           href="https://x.com/jgoodspark"
           target="_blank"
           style="
+            display: block;
             width: fit-content;
             color: #d34c1f;
             text-decoration: underline;
@@ -180,6 +184,7 @@ export default async ({ req, res, log, error }) => {
           href="https://teamspark.xyz"
           target="_blank"
           style="
+            display: block;
             width: fit-content;
             color: #d34c1f;
             text-decoration: underline;
