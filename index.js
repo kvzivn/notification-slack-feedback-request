@@ -51,8 +51,8 @@ export default async ({ req, res, log, error }) => {
     }`
 
     await messaging.createEmail(
-      ID.unique(), // messageId
-      "Testing from server", // subject
+      ID.unique(),
+      "TeamSpark Feedback Session Details",
       `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +75,7 @@ export default async ({ req, res, log, error }) => {
       .content {
         max-width: 570px;
         margin: 0 auto;
-        padding: 0 20px 20px;
+        padding: 0 20px 10px;
         font-family: Inter, "San Francisco", Helvetica, Arial, sans-serif;
         font-size: 15px;
         line-height: 1.6;
@@ -84,7 +84,7 @@ export default async ({ req, res, log, error }) => {
       .footer {
         max-width: 570px;
         margin: 0 auto;
-        padding: 10px 20px 20px;
+        padding: 0 20px 20px;
         font-family: Inter, "San Francisco", Helvetica, Arial, sans-serif;
         font-size: 15px;
         line-height: 1.6;
@@ -119,13 +119,14 @@ export default async ({ req, res, log, error }) => {
         <li><strong>When:</strong> ${timeFrame}</li>
     </ul>
 
-    <p>To complete your payment, please use one of the following links:</p>
+    <p>If you didn't complete your payment, please use one of the following links:</p>
 
-    <p>
+    <p style="display:flex;flex-direction:column;">
       <a
         href="${stripeLink}"
           target="_blank"
           style="
+            width: fit-content;
             color: #d34c1f;
             text-decoration: underline;
             margin: 0;
@@ -133,22 +134,21 @@ export default async ({ req, res, log, error }) => {
           ">
         Pay with Stripe
       </a>
-    </p>
-    <p>
       <a
         href="${eukapayLink}"
         target="_blank"
         style="
+          width: fit-content;
           color: #d34c1f;
           text-decoration: underline;
           margin: 0;
           padding: 0;
       ">
-        Pay with Eukapay
+        Pay with Crypto
       </a>
     </p>
 
-    <p>If you have any questions or need to make changes to your order, please don't hesitate to contact us.</p>
+    <p>If you have any questions or need to make changes to your order, don't hesitate to contact us.</p>
 
     <p>We look forward to providing you with valuable feedback on your project!</p>
 
@@ -163,17 +163,30 @@ export default async ({ req, res, log, error }) => {
           alt="jason"
         />
       </p>
-      <p>
+      <p style="display:flex;flex-direction:column;">
         <a
           href="https://x.com/jgoodspark"
           target="_blank"
           style="
+            width: fit-content;
             color: #d34c1f;
             text-decoration: underline;
             margin: 0;
             padding: 0;
           "
           >@jgoodspark</a
+        >
+        <a
+          href="https://teamspark.xyz"
+          target="_blank"
+          style="
+            width: fit-content;
+            color: #d34c1f;
+            text-decoration: underline;
+            margin: 0;
+            padding: 0;
+          "
+          >teamspark.xyz</a
         >
       </p>
     </div>
