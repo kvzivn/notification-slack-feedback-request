@@ -206,9 +206,9 @@ export default async ({ req, res, log, error }) => {
       true // html (optional)
     )
 
-    // await axios.post(slackWebhookUrl, {
-    //   text: slackMessage,
-    // })
+    await axios.post(slackWebhookUrl, {
+      text: slackMessage,
+    })
   } catch (e) {
     error("Failed to send message: " + e.message)
     return res.send("Failed to send message")
