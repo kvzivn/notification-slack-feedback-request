@@ -107,7 +107,6 @@ export default async ({ req, res, log, error }) => {
       />
     </div>
     <div class="content">
-      <p>Hello ${firstName},</p>
       <p>
         Thank you for your ordering a feedback session with TeamSpark!
       </p>
